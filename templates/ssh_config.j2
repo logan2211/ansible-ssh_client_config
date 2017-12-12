@@ -1,0 +1,8 @@
+# {{ ansible_managed }}
+
+{% for hostglob, config_items in ssh_client_host_configs | dictsort %}
+Host {{ hostglob }}
+{%   for key, value in config_items | dictsort %}
+    {{ key }} {{ value }}
+{%   endfor %}
+{% endfor %}

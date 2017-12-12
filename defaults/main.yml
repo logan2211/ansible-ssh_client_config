@@ -1,0 +1,37 @@
+---
+# Copyright 2017, Logan Vig <logan2211@gmail.com>
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+ssh_client_config_template: ssh_config.j2
+ssh_client_config_path: "{{ ansible_env.HOME }}/.ssh"
+ssh_client_config_file: "{{ ssh_client_config_path }}/config"
+ssh_client_known_hosts_file: "{{ ansible_env.HOME }}/.ssh/known_hosts"
+
+# Ownership parameters for the managed files
+ssh_client_user: root
+ssh_client_group: root
+
+# Enable/disable functions of the role
+ssh_client_config_managed: yes
+ssh_client_known_hosts_managed: yes
+
+ssh_client_host_configs: {}
+# Define like:
+# ssh_client_host_configs:
+#   '*':
+#     KexAlgorithms: '+diffie-hellman-group1-sha1'
+
+# To pre-stage hosts into the known_hosts file
+# ssh_known_hosts:
+#   - github.com
